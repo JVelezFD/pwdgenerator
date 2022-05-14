@@ -26,11 +26,11 @@ for (var i=0; i < uInputPL; i++) {
 return password;
 }
 
-//1.prompts for user input for password criteria length 8-128 and store criteria in function
+//1.Prompts for user input for password criteria length 8-128 and store criteria in function
 
   function getUPrompts () { 
     userChoices= [];
-//pw length user input
+//PW length user input
     uInputPL = parseInt(prompt("How many characters would you like your password to be; between 8-128 characters *#'s only*?"));
     
   while(isNaN(uInputPL) || uInputPL < 8 || uInputPL > 128) {
@@ -38,24 +38,31 @@ return password;
         return false;
       }
 //(Criteria) uppercase, lowercase, special and number criteria confirms from user
+   
 
-      if (confirm("Would you like uppercase leters included in your password?")) {
+      if (confirm("Click OK if you would uppercase leters included in your password?")) {
         userChoices = userChoices.concat(ucharUCase);
       }
 
-      if (confirm("Would you like lowercase leters included in your password?")) {
+      if (confirm("Click OK if you would lowercase leters included in your password?")) {
         userChoices = userChoices.concat(ucharLCase);
       }
 
-      if (confirm("Would you like special characters included in your password?")) {
+      if (confirm("Click OK if you would special characters included in your password?")) {
         userChoices = userChoices.concat(ucharSpecial);
       }
-
-      if (confirm("Would you like numbers included in your password?")) {
+      if (confirm("Click OK if you would like numbers included in your password?")) {
         userChoices = userChoices.concat(ucharNums);
-      }   
-     return true;
-    } 
+      }
+      while (userChoices.length === 0) {
+         alert ("Please Select a criteria try again");
+         return false;
+        }  
+             
+      return true; 
+
+    }
+  
 
 // Write password to the #password input
 function writePassword() {
